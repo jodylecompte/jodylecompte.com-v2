@@ -4,18 +4,20 @@
 
 $colors: (
   primary: (
-    100: hsl(276, 100%, 79%),
-    200: hsl(276, 79%, 69%),
-    300: hsl(276, 53%, 49%),
-    400: hsl(276, 64%, 48%),
-    500: hsl(276, 96%, 20%),
+    100: hsl(19, 90%, 85%),   // Very light burnt orange
+    200: hsl(19, 90%, 75%),   // Light burnt orange
+    300: hsl(19, 90%, 67%),   // Mid-light burnt orange
+    400: hsl(19, 90%, 62%),   // Slightly darker than primary.500
+    500: hsl(19, 90%, 57%),   // The provided color #F68143
+    600: hsl(19, 90%, 52%),   // Darker variant
+    700: hsl(19, 90%, 47%),   // Even darker
   ),
   secondary: (
-    100: hsl(173, 81%, 68%),
-    200: hsl(173, 80%, 63%),
-    300: hsl(173, 72%, 57%),
-    400: hsl(173, 75%, 47%),
-    500: hsl(173, 90%, 30%),
+    100: hsl(205, 100%, 85%), // Lightest Blue
+    200: hsl(205, 80%, 76%),
+    300: hsl(205, 70%, 67%),
+    400: hsl(205, 75%, 57%),
+    500: hsl(205, 90%, 45%), // Darkest Blue
   ),
   neutral: (
     100: hsl(0 0% 100%),

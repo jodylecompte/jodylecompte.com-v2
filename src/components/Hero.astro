@@ -1,7 +1,13 @@
 ---
 import { Icon } from 'astro-icon'
 
-const { src = 'hero_image.png' } = Astro.props
+const {
+  heroImage = 'hero_image.png',
+  linkedInIcon = 'icons/Linkedin.png',
+  youtubeIcon = 'icons/YouTube.svg',
+  twitterIcon = 'icons/Twitter.png',
+  githubIcon = 'icons/Github.png',
+} = Astro.props
 ---
 
 <section class="hero lg:my-24">
@@ -12,7 +18,7 @@ const { src = 'hero_image.png' } = Astro.props
           Projects & writing by <span class="text-gradient text-center">Jody LeCompte</span>
         </h1>
         <div class="mx-auto mt-4 w-[55%]">
-          <img class="lg:block" src={src} alt="" decoding="async" />
+          <img class="lg:block" src={heroImage} alt="" decoding="async" />
         </div>
       </div>
       <div class="w-full max-w-[90%] lg:w-[50%]">
@@ -27,6 +33,20 @@ const { src = 'hero_image.png' } = Astro.props
             technologies. My primary focus is promoting online accessibility and inclusivity, both in my work and in
             encouraging others to do the same.
           </p>
+          <div class="flex gap-3">
+            <a href="https://github.com/jodylecompte">
+              <img src={githubIcon} alt="Jody LeCompte on GitHub" decoding="async" class="h-[35px] w-[35px]" />
+            </a>
+            <a href="https://www.youtube.com/channel/UCh_6YPA6IMoLv7y8cQUZ_gg">
+              <img src={youtubeIcon} alt="Jody LeCompte on YouTube" decoding="async" class="h-[35px] w-[35px]" />
+            </a>
+            <a href="https://twitter.com/jody_lecompte">
+              <img src={twitterIcon} alt="Jody LeCompte on Twitter" decoding="async" class="h-[35px] w-[35px]" />
+            </a>
+            <a href="https://linkedin.com/in/jodylecompte">
+              <img src={linkedInIcon} alt="Jody LeCompte on LinkedIn" decoding="async" class="h-[35px] w-[35px]" />
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,16 @@
+---
+import { Markdown } from 'astro/components'
+
+const { title, summary, date, link } = Astro.props // You can pass these props when using the component.
+---
+
+<a
+  href={link}
+  class="group block rounded border p-4 shadow-md transition hover:bg-gray-100 dark:hover:gray-800 !no-underline"
+  aria-label={`Read blog post titled ${title}`}
+  role="article"
+>
+  <h2 class="text-xl font-bold">{title}</h2>
+  <p class="mt-2 text-gray-700">{summary}</p>
+  <time class="mt-4 block text-sm text-gray-500" datetime={date.toISOString()}>{date.toLocaleDateString()}</time>
+</a>

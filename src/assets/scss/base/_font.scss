@@ -52,7 +52,7 @@ body {
   -webkit-font-smoothing: antialiased;
 
   a:not(.button) {
-    color: var(--action-color);
+    color: #cc4b0b;
     text-decoration: underline;
 
     &:visited {
@@ -85,6 +85,10 @@ body {
   h5,
   h6 {
     font-weight: 600;
+  }
+
+  p {
+    line-height: 2rem;
   }
 
   h1 {

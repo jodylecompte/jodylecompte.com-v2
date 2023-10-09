@@ -1,8 +1,44 @@
 ---
 import DefaultLayout from '../layouts/DefaultLayout.astro'
 import Hero from '../components/Hero.astro'
+import BlogCard from '../components/BlogCard.astro'
+
+const desc = `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam, commodi, maiores debitis dolor iure
+              incidunt quisquam vero in possimus quas delectus reiciendis enim sint. Reiciendis, fugit? Mollitia ipsa
+              nihil atque.`
+
+const posts = [
+{
+    link: '/blog/',
+    desc: 'Join me in a reflective exploration as I share my experiences and lessons learned during my two-year journey as an accessibility engineer. In this post, I take a candid look at how it all began, the progress made, and the ups and downs along the way. From successes to failures, I offer an honest account of the challenges faced and the growth achieved in the dynamic field of accessibility.',
+    title: 'My Journey with Web Accessibility',
+    date: new Date(),
+  },
+  {
+    link: '/blog/',
+    desc: 'The CSS box model is a fundamental but often misunderstood aspect of web development. Have you ever created a few pieces of UI, carefully crafting all the details, only to get something vastly different from what you expected? Let\'s take a deep dive into why this can happen.',
+    title: 'A blog post',
+    date: new Date(),
+  },
+  {
+    link: '/blog/',
+    desc: 'Every new beginner to programming has a moment when learning about the array data structure where they find themselves wondering, why? I don\'t count anything else from zero? Let\'s talk abou the historical reasoning for this.',
+    title: 'Why Do Arrays Start at Zero?',
+    date: new Date(),
+  }
+]
 ---
 
 <DefaultLayout title="Home">
   <Hero />
+  <div class="container">
+    <h2 class="text-center mb-4">Latest Posts</h2>
+    <div>
+      <ul class="flex flex-col gap-8">
+        {posts.map(post => <BlogCard link={post.link} summary={post.desc} title={post.title} date={new Date()} />)}
+        <li>
+        </li>
+      </ul>
+    </div>
+  </div>
 </DefaultLayout>
