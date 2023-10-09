@@ -6,11 +6,11 @@ const { title, summary, date, link } = Astro.props // You can pass these props w
 
 <a
   href={link}
-  class="group block rounded border p-4 shadow-md transition hover:bg-gray-100 dark:hover:gray-800 !no-underline"
+  class="group block rounded border p-4 shadow-md transition !no-underline"
   aria-label={`Read blog post titled ${title}`}
   role="article"
 >
   <h2 class="text-xl font-bold">{title}</h2>
-  <p class="mt-2 text-gray-700">{summary}</p>
-  <time class="mt-4 block text-sm text-gray-500" datetime={date.toISOString()}>{date.toLocaleDateString()}</time>
+  <p class="mt-">{summary}</p>
+  <time class="mt-4 block text-sm" datetime={date.toISOString()}>{date.toLocaleDateString()}</time>
 </a>

@@ -9,7 +9,6 @@ import matter from 'gray-matter';
 
 
 export async function getStaticPaths({ paginate }) {
-  // Fetch all MDX files from the 'post' directory
   const postsDirectory = path.join(process.cwd(), 'src/pages/blog');
   const filenames = await fs.readdir(postsDirectory);
   const mdxFiles = filenames.filter(fn => fn.endsWith('.mdx'));
@@ -19,10 +18,10 @@ export async function getStaticPaths({ paginate }) {
     filenames.filter(fn => fn.endsWith('.mdx')).map(async (filename) => {
       const filePath = path.join(postsDirectory, filename);
       const fileContent = await fs.readFile(filePath, 'utf8');
-      const { data } = matter(fileContent); // Extract frontmatter
+      const { data } = matter(fileContent); 
       return {
-        filename, // you might use this as a slug or an identifier
-        ...data   // spread the frontmatter data
+        filename,
+        ...data   
       };
     })
   );
@@ -30,7 +29,8 @@ export async function getStaticPaths({ paginate }) {
   return paginate(posts, { pageSize: 6 });
 }
 
-const { page } = Astro.props
+const { page } = Astro.props;
+const totalPages = Math.round(page.total / page.size);
 ---
 
 <DefaultLayout
@@ -47,7 +47,7 @@ const { page } = Astro.props
   </section>
   <section class="my-12">
     <div class="container">
-      <p class="text-sm"><em>Post {page.start + 1} through {page.end + 1} of {page.total} total posts</em></p>
+      {totalPages > 0 && (<p class="text-sm"><em>Post {page.start + 1} through {page.end + 1} of {page.total} total posts</em></p>)}
       <ul class="my-3 flex flex-col gap-4">
         {
           page.data.map((post) => (
@@ -63,6 +63,7 @@ const { page } = Astro.props
           ))
         }
       </ul>
+      {totalPages !== 0 && (
       <div class="mt-12 grid place-content-center">
         <Pagination
           firstPage={page.url.prev ? '/blog' : null}
@@ -70,9 +71,10 @@ const { page } = Astro.props
           nextPage={page.url.next ? page.url.next : null}
           lastPage={page.url.next ? `/blog/${Math.round(page.total / page.size)}` : null}
           currentPage={page.currentPage}
-          totalPages={Math.round(page.total / page.size)}
+          totalPages={totalPages}
         />
       </div>
+      ) }
     </div>
   </section>
 </DefaultLayout>
