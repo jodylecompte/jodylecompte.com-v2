@@ -52,7 +52,7 @@ body {
   -webkit-font-smoothing: antialiased;
 
   a:not(.button) {
-    color: #cc4b0b;
+    color: var(--action-color);
     text-decoration: underline;
 
     &:visited {

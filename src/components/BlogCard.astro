@@ -11,6 +11,6 @@ const { title, summary, date, link } = Astro.props // You can pass these props w
   role="article"
 >
   <h2 class="text-xl font-bold">{title}</h2>
-  <p class="mt-">{summary}</p>
+  <p class="mt-2 text-black dark:text-white">{summary}</p>
   <time class="mt-4 block text-sm" datetime={date.toISOString()}>{date.toLocaleDateString()}</time>
 </a>
