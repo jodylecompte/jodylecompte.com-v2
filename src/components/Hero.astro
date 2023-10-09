@@ -1,0 +1,51 @@
+---
+import { Icon } from 'astro-icon'
+
+const { src = 'hero_image.png' } = Astro.props
+---
+
+<section class="hero my-24">
+  <div class="container">
+    <div class="flex items-center gap-8">
+      <div class="w-[50%]">
+        <h1 class="flex flex-col text-right">
+          Projects and writing by <span class="text-gradient text-center">Jody LeCompte</span>
+        </h1>
+        <div class="mx-auto mt-4 w-[55%]">
+          <img class="lg:block" src={src} alt="" decoding="async" />
+        </div>
+      </div>
+      <div class="w-[50%]">
+        <div class="flex flex-col gap-4">
+          <p class="leading-7">
+            I'm Jody, a senior software engineer based in the greater New Orleans area. I'm currently working at
+            Celebration Travel Group USA as a fullstack engineer. I'm also a husband, father, and a lover of all things
+            tech.
+          </p>
+          <p class="leading-7">
+            I primarily specialize in TypeScript, Node, and React. However, my expertise extends to PHP, Python, Elixir,
+            and a range of other technologies I've engaged with over the years. At the heart of my mission is a
+            commitment to enhancing online accessibility and inclusivity. I'm passionate about not only implementing
+            these values in my own work but also in empowering others to champion the same cause.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .text-gradient {
+    background: linear-gradient(315deg, var(--primary-200) 25%, var(--secondary-500));
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  :global(.darkmode .text-gradient) {
+    background: linear-gradient(315deg, var(--primary-200) 25%, var(--secondary-400));
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
