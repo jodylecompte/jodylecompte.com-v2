@@ -1,31 +1,13 @@
 ---
-import DefaultLayout from '../../layouts/DefaultLayout.astro'
-import { Card, Pagination } from 'accessible-astro-components'
-import BlogCard from '../../components/BlogCard.astro'
-import { promises as fs } from 'node:fs';
-import path from 'node:path';
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+import { Card, Pagination } from 'accessible-astro-components';
+import BlogCard from '../../components/BlogCard.astro';
 import matter from 'gray-matter';
 
-
+import { loadPosts } from '../../util/loadPosts';
 
 export async function getStaticPaths({ paginate }) {
-  const postsDirectory = path.join(process.cwd(), 'src/pages/blog');
-  const filenames = await fs.readdir(postsDirectory);
-  const mdxFiles = filenames.filter(fn => fn.endsWith('.mdx'));
-
-
-  const posts = await Promise.all(
-    filenames.filter(fn => fn.endsWith('.mdx')).map(async (filename) => {
-      const filePath = path.join(postsDirectory, filename);
-      const fileContent = await fs.readFile(filePath, 'utf8');
-      const { data } = matter(fileContent); 
-      return {
-        filename,
-        ...data   
-      };
-    })
-  );
-
+  const posts = await loadPosts();
   return paginate(posts, { pageSize: 6 });
 }
 
@@ -40,14 +22,20 @@ const totalPages = Math.round(page.total / page.size);
   <section class="my-12">
     <div class="space-content container">
       <h1>Blog</h1>
-      <p class="text-2xl">
-        There be blog posts here!
-      </p>
+      <p class="text-2xl">There be blog posts here!</p>
     </div>
   </section>
   <section class="my-12">
     <div class="container">
-      {totalPages > 0 && (<p class="text-sm"><em>Post {page.start + 1} through {page.end + 1} of {page.total} total posts</em></p>)}
+      {
+        totalPages > 0 && (
+          <p class="text-sm">
+            <em>
+              Post {page.start + 1} through {page.end + 1} of {page.total} total posts
+            </em>
+          </p>
+        )
+      }
       <ul class="my-3 flex flex-col gap-4">
         {
           page.data.map((post) => (
@@ -63,22 +51,22 @@ const totalPages = Math.round(page.total / page.size);
           ))
         }
       </ul>
-      {totalPages !== 0 && (
-      <div class="mt-12 grid place-content-center">
-        <Pagination
-          firstPage={page.url.prev ? '/blog' : null}
-          previousPage={page.url.prev ? page.url.prev : null}
-          nextPage={page.url.next ? page.url.next : null}
-          lastPage={page.url.next ? `/blog/${Math.round(page.total / page.size)}` : null}
-          currentPage={page.currentPage}
-          totalPages={totalPages}
-        />
-      </div>
-      ) }
+      {
+        totalPages !== 0 && (
+          <div class="mt-12 grid place-content-center">
+            <Pagination
+              firstPage={page.url.prev ? '/blog' : null}
+              previousPage={page.url.prev ? page.url.prev : null}
+              nextPage={page.url.next ? page.url.next : null}
+              lastPage={page.url.next ? `/blog/${Math.round(page.total / page.size)}` : null}
+              currentPage={page.currentPage}
+              totalPages={totalPages}
+            />
+          </div>
+        )
+      }
     </div>
   </section>
 </DefaultLayout>
 
-<style lang="scss">
- 
-</style>
+<style lang="scss"></style>
