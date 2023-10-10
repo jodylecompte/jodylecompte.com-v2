@@ -1,13 +1,12 @@
 ---
-import { Icon } from 'astro-icon'
+import { Icon } from 'astro-icon';
+import { Image } from 'astro:assets';
 
-const {
-  heroImage = 'hero_image.png',
-  linkedInIcon = 'icons/Linkedin.png',
-  youtubeIcon = 'icons/YouTube.svg',
-  twitterIcon = 'icons/Twitter.png',
-  githubIcon = 'icons/Github.png',
-} = Astro.props
+import heroImage from '../assets/img/hero_image.png';
+import githubIcon from '../assets/icons/Github.png';
+import linkedInIcon from '../assets/icons/Linkedin.png';
+import twitterIcon from '../assets/icons/Twitter.png';
+import youtubeIcon from '../assets/icons/YouTube.svg';
 ---
 
 <section class="hero lg:my-24">
@@ -18,7 +17,7 @@ const {
           Projects & writing by <span class="text-gradient text-center">Jody LeCompte</span>
         </h1>
         <div class="mx-auto mt-4 w-[55%]">
-          <img class="lg:block" src={heroImage} alt="" decoding="async" />
+          <Image class="lg:block" src={heroImage} alt="" decoding="async" />
         </div>
       </div>
       <div class="w-full max-w-[90%] lg:w-[50%]">
@@ -35,16 +34,16 @@ const {
           </p>
           <div class="flex gap-3">
             <a href="https://github.com/jodylecompte">
-              <img src={githubIcon} alt="Jody LeCompte on GitHub" decoding="async" class="h-[35px] w-[35px]" />
+              <Image src={githubIcon} alt="Jody LeCompte on GitHub" decoding="async" class="h-[35px] w-[35px]" />
             </a>
             <a href="https://www.youtube.com/channel/UCh_6YPA6IMoLv7y8cQUZ_gg">
-              <img src={youtubeIcon} alt="Jody LeCompte on YouTube" decoding="async" class="h-[35px] w-[35px]" />
+              <Image src={youtubeIcon} alt="Jody LeCompte on YouTube" decoding="async" class="h-[35px] w-[35px]" />
             </a>
             <a href="https://twitter.com/jody_lecompte">
-              <img src={twitterIcon} alt="Jody LeCompte on Twitter" decoding="async" class="h-[35px] w-[35px]" />
+              <Image src={twitterIcon} alt="Jody LeCompte on Twitter" decoding="async" class="h-[35px] w-[35px]" />
             </a>
             <a href="https://linkedin.com/in/jodylecompte">
-              <img src={linkedInIcon} alt="Jody LeCompte on LinkedIn" decoding="async" class="h-[35px] w-[35px]" />
+              <Image src={linkedInIcon} alt="Jody LeCompte on LinkedIn" decoding="async" class="h-[35px] w-[35px]" />
             </a>
           </div>
         </div>
