@@ -5,23 +5,24 @@ import BlogCard from '../components/BlogCard.astro';
 import { loadPosts } from '../util/loadPosts';
 
 const posts = await loadPosts();
-console.log(posts);
 ---
 
 <DefaultLayout title="Home">
   <Hero />
-  <div class="container">
-    <h2 class="mb-4 text-center">Latest Posts</h2>
-    <div>
-      <ul class="flex flex-col gap-8">
-        {
-          posts.map((post) => (
-            <li>
-              <BlogCard link={post.slug} summary={post.summary} title={post.title} date={new Date()} />
-            </li>
-          ))
-        }
-      </ul>
+  <div class="mt-8 bg-gray-100 pb-12 pt-6 dark:bg-gray-900">
+    <div class="container">
+      <h2 class="mb-4 text-center">Latest Posts</h2>
+      <div>
+        <ul class="flex flex-col gap-8">
+          {
+            posts.map((post) => (
+              <li>
+                <BlogCard link={post.filename} summary={post.summary} title={post.title} date={new Date()} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
   </div>
 </DefaultLayout>
