@@ -1,9 +1,9 @@
 ---
-import '@astrojs/tailwind/base.css'
-import '../assets/scss/globals.scss'
-import SiteMeta from '../components/SiteMeta.astro'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
+import '@astrojs/tailwind/base.css';
+import '../assets/scss/globals.scss';
+import SiteMeta from '../components/SiteMeta.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 const {
   title = 'Astro',
@@ -11,7 +11,7 @@ const {
   url,
   image = '/social-preview-image.png',
   author = 'Mark Teekman',
-} = Astro.props
+} = Astro.props;
 ---
 
 <html lang="en" dir="ltr">
@@ -60,8 +60,8 @@ const {
       // dark color scheme overrides
       .darkmode {
         --font-color: var(--neutral-100);
-        --action-color: hsl(24,91%,61%);
-        --action-color-state: hsl(24,91%,71%);
+        --action-color: #ffffff;
+        --action-color-state: hsl(24, 91%, 61%);
         --background: var(--dark-100);
         --primary-background: var(--primary-500);
         --neutral-background: var(--neutral-900);

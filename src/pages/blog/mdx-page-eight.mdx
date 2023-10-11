@@ -8,103 +8,96 @@ publishDate: 10-10-2023
 import { Icon } from 'astro-icon';
 import { Notification } from 'accessible-astro-components';
 
-# MDX Page
+## Prerequisites
 
-## Intro
+This article only assumes that you are familiar with the idea of an array in any programming language.
 
-ChatGPT re-wrote the book on AI seemingly overnight.
+If you program in a lower-level language, you likely already understand the reasoning and this
+article is probably not for you, but I'm glad you stopped by none the less!
 
-Artificial intelligence has been a blooming area of tech for a few years now with more and more people
-getting excited about AI, machine learning, data science, and similar disciplines. Most of the talk was
-isolated to tech communities while wider circles often refer to AI as simply "the algorithm" for whatever
-service they might want to talk about.
+## What is an Array?
 
-ChatGPT surged artificial intelligence into the forefront and now everyone is playing with it from having
-it write code, writing marketing copy, even entire AI generated books have begun to be published on Amazon.
-This has created a lot of excitement, a lot of fear, and a lot of hot takes. Will AI replace humans? Is ChatGPT
-sentient? How long is the ChatGPT Plus wait-list going to last.
+An array as defined by Merriam-Webster is "a data structure in which similar elements of data are arranged in
+a table". As higher-level languages like PHP, Ruby, Python, and JavaScript hit the scene, the lines became
+blurred with terms like array, list, or collection all being used interchangeably.
 
-I won't really be touching on most of that as I am neither a physic nor do I play one on late-night
-commercials. But instead, I want to ask the open-ended question of if we are being unfair in our judgement
-and expectations of artificial intelligence and offer some of my thoughts of why that may be the case.
+For the instant gratification folks -- the short and sweet is that arrays start with 0 because of pointer
+arithmetic. What does this mean? Let's first draw a comparison to arrays in more high-level languages.
 
-Each of the cases that I touch on below is a common sentiment I've seen expressed in ChatGPT discussions
-that are not necessarily wrong, but not necessarily the limitation or issue it's presented to be. I will
-refer to AI as "ChatGPT", but most everything will be able to apply to any similar generative AI.
+## Arrays in High-Level Languages
 
-## ChatGPT writes really bad code that shouldn't exist in a production environment.
+Using PHP as an example, an array is written like this:
 
-I've got bad news to give you about every software developer ever.
+```php
+$arr = ['Jody', "Johnny", "Jenny", "Jessie"];
+```
 
-Professional developers write bad code all the time and get paid quite handsomely to do it. They ship code
-that fails tests, logic that is incorrect, or sometimes code that doesn't even compile. I'm not trying to
-beat up on my entire industry or make it seem like we are dogs pawing at a keyboard, but we are fallible
-humans and we make mistakes.
+This looks more or less like an "array" does in pretty much any other language, a collection of names that
+are grouped into a single unit. The size of the array is known, and all entries share a single datatype of
+string. However, this is also valid:
 
-To begin to establish the core trend early, we are already expecting AI to be not just as capable as a human
-but more capable than a human. Like humans, ChatGPT needs experienced programmers to teach it to be better.
-And that's [exactly what OpenAI is doing](https://www.zdnet.com/article/openai-is-hiring-developers-to-make-chatgpt-better-at-coding/).
+```php
+$arr = [1, "Jody", false];
+```
 
-## ChatGPT will confidently tell you completely incorrect information.
+This breaks one of the rules of arrays by mixing data types. The following also works, which PHP calls an
+associative array.
 
-There are some people who will present themselves as an authority figure over a subject matter that they
-almost couldn't know less about. Let's take that scenario off the table.
+```php
+$arr = [
+    "name" => "Jody",
+    "age" => 32,
+];
+```
 
-When you think you know something, you think you know. There is no reason to not be confident. For the
-second time now, we have put AI up on a pedestal where we judge it's utility based on a level that we
-ourselves have not been able to reach.
+Now we are not only mixing data types, but we have a key-value relationship like what JavaScript would call
+an object, Python would call a dictionary, and Java would call a hash map. This is because under the hood,
+an array in PHP is actually an implementation of an ordered map.
 
-The argument can be made that re-training an algorithm and re-training a human brain aren't apples to apples,
-and that's certainly true, but AI also lacks that wonderful quality found in humans to receive conflicting
-information from a reliable source and choose to disregard it. On the topic of sources, quality matters.
+## Arrays in Low-Level Languages
 
-## ChatGPT isn't capable of understanding vague requirements from a user to create software.
+To contrast, let's look at the idea of an array in a lower level language like C.
 
-I'm concerned I may be beating a dead horse at this point, but we haven't exactly figured that out either.
-We get it right often enough, but many times we ship code that is not 100% aligned with the project
-owner or user's expectations. Or we get it right but those expectations change. In any case, we have created
-entire development methodology frameworks to try to solve this problem (amongst others) and I wouldn't
-yet feel confident in saying it's a solved problem.
+```c
+int ages[] = {32, 36, 41, 42, 45};
+```
 
-I reckon my job is safe for at least for a few more months, but this problem is easily remedied by continued
-training and improvements to predictive and generative AI models. The benefit and brilliance of ChatGPT's
-open beta is that the amount of feedback and data that has been collected to improve the model is
-tremendous to an almost unfathomable degree. I think the value of this is quickly becoming apparent to those
-experimenting with ChatGPT-4.
+The syntax is almost identical, but there is vastly different behavior occurring here. The array can only
+contain a single datatype as dictated by the definition, in this case, integers. The reason being is that
+a true array, items are stored in contiguous units of memory. Imagine a table where each column represents
+4 bytes of memory, which is the size of a 32-bit integer.
 
-## ChatGPT will never be able to do everything, AI can only be specialized.
+This is the same reason why the size of an array must be known at the point of initialization, because if you
+create an array with five items and a size of five, then later want to add five more items, there is no
+guarantee there are five blocks of memory available to be allocated from the same starting point.
+What makes that detail so significant?
 
-I am not qualified to know for certain how likely this is to be true or false. My gut feeling is that
-hardware would quickly become the bottleneck to be able to iterate and train on such a massive amount of
-data. But maybe not?
+It comes down to how C and similar languages allocate memory and then reference the value stored
+to that memory.
 
-In any case, needing to specialize would make AI more human.
+## Pointers and Pointer Arithmetic
 
-There are certainly generalists and people who have "T" shaped knowledge, or a more shallow knowledge
-across a wider range of topics and a deep emphasis or specialization in a much smaller number of topics.
-But if you walk into a hospital, you will find people who specialize in just the heart, or just the lungs.
-People dedicating years of formal education and decades of practice around your feet or your brain.
+If you have not written in a language with lower-level memory controls, you may be unfamiliar with pointers.
+Just think of it as a label. Referencing the code above, `ages` is not an actual value like when you save
+a single boolean or integer to a variable, but rather a pointer that points to a specific location in memory.
+This i where the table we mentioned earlier lives.
 
-If given a choice between an average general-purpose AI and an exceptional specialized AI, I would choose
-the latter.
+The way pointer arithmetic works is that you can take the value of a pointer, a memory address, add the
+size of the data type (4 bytes / 32 bits in this case for an integer) and that gives you the memory address
+of the next item in the array. C, and other similar low level languages handle this for you behind the
+scenes when looking up an array item by an index. However, you may see this done manually in other
+use cases.
 
-## Some Last Thoughts
+## Conclusion
 
-I generally think that "prompt based" interaction with information systems will become the more normal.
-There has already been a lot of that happening for a while. I used to be a digital marketer specializing
-in paid search and a large number of my searches were things like "Hey Google, how much would a note on
-a Honda Civic be?".
+This is the reason that arrays, in most languages, start with zero. Because you aren't actually dealing with
+an index like a numbered list of items on a todo list, but actually a memory offset. So `arr[2]` isn't saying
+give me the second item in the array, it's saying give me a memory address of:
 
-AI is going to become an increasingly prevalent part of digital society. There is not a single industry
-that is not capable of benefitting in some way from the latest generations of artificial intelligence.
+```text
+desired address = starting memory address + (size of data type * 2)
+```
 
-We are going to soon have to challenge our current beliefs and frameworks around what constitutes sentience
-or intelligence.
-
-And when AI takes my job, I am going to open up a brewery that refuses to sell IPAs.
-
-**But most importantly...**
-
-I think we should stop comparing AI to ourselves and certainly stop expecting it to need to be better
-than us in some measurable way in order to produce large sums of value and utility with it. Which is the core
-point of why I sat down to write this.
+There are languages like Lua that index "arrays" starting at 1, but for the most part, it will always be zero
+for one or more reasons such as the language using arrays under the hood even if the array from userland is
+not an array in the strict sense or just to match a long-established convention.
