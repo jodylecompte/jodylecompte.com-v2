@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+
+import githubIcon from '../assets/icons/Github.png';
+import linkedInIcon from '../assets/icons/Linkedin.png';
+import twitterIcon from '../assets/icons/Twitter.png';
+import youtubeIcon from '../assets/icons/YouTube.svg';
+---
+
+<a href="https://github.com/jodylecompte">
+  <Image src={githubIcon} alt="Jody LeCompte on GitHub" decoding="async" width={35} height={35} />
+</a>
+<a href="https://www.youtube.com/channel/UCh_6YPA6IMoLv7y8cQUZ_gg">
+  <Image src={youtubeIcon} alt="Jody LeCompte on YouTube" decoding="async" width="35" height="35" />
+</a>
+<a href="https://twitter.com/jody_lecompte">
+  <Image src={twitterIcon} alt="Jody LeCompte on Twitter" decoding="async" width="32" height="32" />
+</a>
+<a href="https://linkedin.com/in/jodylecompte">
+  <Image src={linkedInIcon} alt="Jody LeCompte on LinkedIn" decoding="async" width="30" height="30" />
+</a>
