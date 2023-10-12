@@ -41,7 +41,7 @@ const totalPages = Math.round(page.total / page.size);
           page.data.map((post) => (
             <li>
               <BlogCard
-                link={'/blog/' + post.slug}
+                link={'/' + post.slug}
                 title={post.title}
                 footer={'userId:' + post.userId}
                 summary={post.summary}

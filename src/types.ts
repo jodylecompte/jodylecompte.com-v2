@@ -1,5 +1,5 @@
 export type Post = {
-  filename: string;
+  slug: string;
   title: string;
   summary: string;
   publishDate: Date;
