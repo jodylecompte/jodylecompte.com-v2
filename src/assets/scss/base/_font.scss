@@ -46,7 +46,7 @@ body {
   text-rendering: optimizeLegibility;
   font-synthesis: none;
   font-size: 16px;
-  line-height: 1.5rem;
+  line-height: 1rem;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -88,7 +88,13 @@ body {
   }
 
   p {
-    line-height: 1.8rem;
+    line-height: 1.6rem;
+  }
+
+  blockquote {
+    padding: 1rem;
+    border-left: 2px solid var(--action-color-state);
+    background: var(--neutral-background);
   }
 
   h1 {

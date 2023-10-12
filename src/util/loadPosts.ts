@@ -18,7 +18,7 @@ export const loadPosts = async (): Promise<Post[]> => {
         filename: filename.replace('.mdx', ''),
         title: data.title,
         summary: data.summary,
-        date: new Date(data.date),
+        publishDate: new Date(data.publishDate),
       };
     })
   );

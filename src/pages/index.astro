@@ -17,7 +17,7 @@ const posts = await loadPosts();
           {
             posts.map((post) => (
               <li>
-                <BlogCard link={post.filename} summary={post.summary} title={post.title} date={new Date()} />
+                <BlogCard link={post.filename} summary={post.summary} title={post.title} date={post.publishDate} />
               </li>
             ))
           }
