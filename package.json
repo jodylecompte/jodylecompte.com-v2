@@ -32,6 +32,14 @@
     "tailwindcss": "^3.2.7"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3"
+    "@astrojs/react": "^3.0.3",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
+    "gray-matter": "^4.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "^version"
   }
 }
