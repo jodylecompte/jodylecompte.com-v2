@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import glob from 'glob';
+import { glob } from 'glob';
 import matter from 'gray-matter';
 
 import type { Post } from '../types';
@@ -10,7 +10,7 @@ export const loadPosts = async (): Promise<Post[]> => {
 
   // Use glob to get all .mdx files recursively
   const mdxFiles = glob.sync('**/*.mdx', {
-    cwd: postsDirectory
+    cwd: postsDirectory,
   });
 
   const posts = await Promise.all(
