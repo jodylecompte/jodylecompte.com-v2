@@ -1,8 +1,7 @@
 ---
 import DefaultLayout from '../../layouts/DefaultLayout.astro';
-import { Card, Pagination } from 'accessible-astro-components';
+import { Pagination } from 'accessible-astro-components';
 import BlogCard from '../../components/BlogCard.astro';
-import matter from 'gray-matter';
 
 import { loadPosts } from '../../util/loadPosts';
 
@@ -21,8 +20,8 @@ const totalPages = Math.round(page.total / page.size);
 >
   <section class="my-12">
     <div class="space-content container">
-      <h1>Blog</h1>
-      <p class="text-2xl">There be blog posts here!</p>
+      <h1>All Blog Posts</h1>
+      <p class="text-2xl">A curation of my thoughts around software, web development, accessibility and other fun tech stuff.</p>
     </div>
   </section>
   <section class="my-12">
