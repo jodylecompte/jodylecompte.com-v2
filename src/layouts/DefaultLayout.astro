@@ -8,8 +8,6 @@ import Footer from '../components/Footer.astro';
 const {
   title = 'JodyLeCompte.com',
   description = `I'm Jody, a senior software engineer based in the greater New Orleans area. I'm currently working at Celebration Travel Group as a fullstack engineer. I'm also a husband, father, and a lover of all things tech.`,
-  url,
-  image = '/images/og_card.png',
   author = 'Jody LeCompte',
 } = Astro.props;
 ---
@@ -25,7 +23,7 @@ const {
 
     <SiteMeta
       title={title}
-      description={description.substring(0, 100)}
+      description={description}
       url={'https://jodylecmpte.com'}
       image='https://jodylecompte.com/images/og_card.png'
       author={author}
