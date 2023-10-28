@@ -9,6 +9,7 @@ const {
   title = 'JodyLeCompte.com',
   description = `I'm Jody, a senior software engineer based in the greater New Orleans area. I'm currently working at Celebration Travel Group as a fullstack engineer. I'm also a husband, father, and a lover of all things tech.`,
   author = 'Jody LeCompte',
+  image,
 } = Astro.props;
 ---
 
@@ -25,7 +26,7 @@ const {
       title={title}
       description={description}
       url={'https://jodylecmpte.com'}
-      image='https://jodylecompte.com/images/og_card.png'
+      image={image}
       author={author}
     />
   </head>

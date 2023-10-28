@@ -4,7 +4,7 @@ import DefaultLayout from './DefaultLayout.astro'
 const { frontmatter } = Astro.props
 ---
 
-<DefaultLayout title={frontmatter.title} description={frontmatter.summary}>
+<DefaultLayout title={frontmatter.title} description={frontmatter.summary} image={`${frontmatter.slug}/og.png`}>
   <div class="container">
     <div class="space-content my-12 px-16">
       <slot />

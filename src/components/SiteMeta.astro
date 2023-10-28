@@ -2,6 +2,10 @@
 const { title, description, url, image, author } = Astro.props;
 
 let subtitle = 'JodyLeCompte.com';
+
+const ogImageUrl = image 
+  ? 'https://jodylecompte.com/blog/' + image
+  : "https://jodylecompte.com/images/og_card.png"
 ---
 
 <!-- general meta -->
@@ -15,7 +19,7 @@ let subtitle = 'JodyLeCompte.com';
 <meta property="og:type" content="website" />
 <meta property="og:url" content={url} />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta property="og:image" content="https://jodylecompte.com/images/og_card.png" />
+<meta property="og:image" content={ogImageUrl} />
 
 <!-- twitter card -->
 
