@@ -19,11 +19,8 @@ export async function GET({ props }: Props) {
 
   // // post cover with Image is pretty trick
   const imagePath = path.resolve('./src/assets/img/og_selfie.png');
-  const postCover = fs.readFileSync(
-    process.env.NODE_ENV === 'development'
-      ? path.resolve(imagePath.replace(/\?.*/, '').replace('/@fs', ''))
-      : path.resolve(imagePath.replace('/', 'dist/'))
-  );
+  console.log('Image path: ', imagePath)
+  const postCover = fs.readFileSync(imagePath);
 
   const html: any = {
     type: 'div',
