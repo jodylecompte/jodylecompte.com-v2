@@ -30,15 +30,8 @@ export async function GET({ props }: Props) {
         {
           type: 'div',
           props: {
-            tw: 'text-white text-5xl font-bold p-6 max-w-[50%]',
+            tw: 'text-white text-7xl font-bold p-6 max-w-[60%]',
             children: post.title,
-          },
-        },
-        {
-          type: 'div',
-          props: {
-            tw: 'text-white text-xl p-6 max-w-[50%]',
-            children: post.summary,
           },
         },
       ],
