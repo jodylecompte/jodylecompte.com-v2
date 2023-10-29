@@ -18,9 +18,10 @@ export async function GET({ props }: Props) {
   const OpenSansReqular = fs.readFileSync(path.resolve('./public/fonts/OpenSans-Regular.woff'));
 
   // // post cover with Image is pretty trick
-  const imagePath = path.resolve('./src/assets/img/og_selfie.png');
-  console.log('Image path: ', imagePath)
+  const imagePath = path.resolve('./src/assets/img/og_background.jpg');
+  console.log('Image path: ', imagePath);
   const postCover = fs.readFileSync(imagePath);
+  const imageBase64 = postCover.toString('base64');
 
   const html: any = {
     type: 'div',
@@ -29,67 +30,32 @@ export async function GET({ props }: Props) {
         {
           type: 'div',
           props: {
-            // using tailwind
-            tw: 'w-[200px] h-[200px] flex rounded-3xl overflow-hidden flex-column',
-            children: [
-              {
-                type: 'img',
-                props: {
-                  src: postCover.buffer,
-                },
-              },
-            ],
+            tw: 'text-white text-5xl font-bold p-6 max-w-[50%]',
+            children: post.title,
           },
         },
         {
           type: 'div',
           props: {
-            tw: 'pl-10 shrink flex text-white',
-            children: [
-              {
-                type: 'div',
-                props: {
-                  style: {
-                    fontSize: '48px',
-                    fontFamily: 'Open Sans Bold',
-                  },
-                  children: post.title,
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'div',
-          props: {
-            tw: 'absolute right-[40px] bottom-[40px] flex items-center text-white',
-            children: [
-              {
-                type: 'div',
-                props: {
-                  tw: 'text-white text-3xl p-2 rounded',
-                  style: {
-                    fontFamily: 'Open Sans Bold',
-                    background: 'linear-gradient(to left,#faa23d,#f70965)',
-                  },
-                  children: 'Blog Posts by Jody LeCompte',
-                },
-              },
-            ],
+            tw: 'text-white text-xl p-6 max-w-[50%]',
+            children: post.summary,
           },
         },
       ],
-      tw: 'w-full h-full flex flex-columm items-center justify-center relative px-22',
+      tw: 'w-full h-full flex flex-col justify-center',
       style: {
-        background: '#161618',
+        backgroundImage: `url(data:image/jpeg;base64,${imageBase64})`,
         fontFamily: 'Open Sans Regular',
+        backgroundSize: 'contain', 
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center center',
       },
     },
   };
 
   return new ImageResponse(html, {
-    width: 1200,
-    height: 600,
+    width: 1280,
+    height: 720,
     fonts: [
       {
         name: 'Open Sans Bold',

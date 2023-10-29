@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
 import compress from 'astro-compress';
+import { astroImageTools } from "astro-imagetools";
 
 import react from '@astrojs/react';
 
@@ -14,6 +15,7 @@ export default defineConfig({
     },
   },
   integrations: [
+    astroImageTools,
     mdx(),
     tailwind({
       applyBaseStyles: false,
