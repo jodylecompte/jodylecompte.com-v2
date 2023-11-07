@@ -28,14 +28,14 @@ const totalPages = Math.round(page.total / page.size);
     <div class="container">
       {
         totalPages > 0 && (
-          <p class="text-sm">
+          <p class="text-sm mb-3">
             <em>
               Post {page.start + 1} through {page.end + 1} of {page.total} total posts
             </em>
           </p>
         )
       }
-      <ul class="my-3 flex flex-col gap-4">
+      <ul class="my-3 flex flex-col gap-6">
         {
           page.data.map((post) => (
             <li>
@@ -44,7 +44,7 @@ const totalPages = Math.round(page.total / page.size);
                 title={post.title}
                 footer={'userId:' + post.userId}
                 summary={post.summary}
-                date={new Date()}
+                date={post.publishDate}
               />
             </li>
           ))

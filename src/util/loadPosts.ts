@@ -13,25 +13,26 @@ export const loadPosts = async (): Promise<Post[]> => {
     cwd: postsDirectory,
   });
 
-  const posts = await Promise.all(
-    mdxFiles.map(async (filePath) => {
-      const absoluteFilePath = path.join(postsDirectory, filePath);
-      const fileContent = await fs.readFile(absoluteFilePath, 'utf8');
-      const { data } = matter(fileContent);
+  const posts: Post[] = [];
 
-      // Ensure the slug exists in the front matter
-      if (!data.slug) {
-        throw new Error(`Slug is missing in ${filePath}`);
-      }
+  for (const filePath of mdxFiles) {
+    const absoluteFilePath = path.join(postsDirectory, filePath);
+    const fileContent = await fs.readFile(absoluteFilePath, 'utf8');
+    const { data } = matter(fileContent);
 
-      return {
-        slug: data.slug,
-        title: data.title,
-        summary: data.summary,
-        publishDate: new Date(data.publishDate),
-      };
-    })
-  );
+    // Ensure the slug exists in the front matter
+    if (!data.slug) {
+      throw new Error(`Slug is missing in ${filePath}`);
+    }
 
-  return posts;
+    posts.push({
+      slug: data.slug,
+      title: data.title,
+      summary: data.summary,
+      publishDate: new Date(data.publishDate),
+    });
+  }
+
+  // Sort the posts by date (from most recent first to oldest)
+  return posts.sort((a, b) => b.publishDate.getTime() - a.publishDate.getTime());
 };

@@ -1,0 +1,107 @@
+---
+layout: ../../../layouts/MarkdownLayout.astro
+title: Do clients care about your tech stack?
+summary: It's often said that clients don't care about your tech stack, but how true is this really? Maybe they care more than we give them credit for? Let's talk about it.
+publishDate: 11-07-2023
+slug: do-clients-care-about-your-tech-stack
+---
+import { Image } from 'astro:assets';
+import tweet from './tweet.png';
+
+# Do clients care about our tech stack?
+It's often said that clients don't care about your tech stack, but how true is this really? Maybe they care more than we give them credit for? Let's talk about it.
+
+## The Narrative
+Anyone who frequents X or LinkedIn has likely seen a post along the lines of this:
+
+<Image 
+  src={tweet} 
+  alt="Fictional tweet from 'JimBob McCodington' reading: Golly gee, y'all. The client doesn't care what tech stack you use, all they care about are results"
+  width={500}
+  style={{ margin: '3rem auto' }}
+  />
+
+It's often expressed in the context of developers defending their technical choices for a project or in response to debates about what the most appropriate
+technology is to use for a project. There is an amount of truth to this statement, but there is also a level of nuance that is often left out. Especially so
+on sites like X where most users are still conforming to a minimal character limit.
+
+## Agencies and Staff Augmentation
+The most likely time that a client will actually care specifically about the atomic units of your tech stack
+is in an agency or staff augmentation project.
+
+It's not a golden rule. I've been on projects where the client hired an agency, in part, to dictate best practices and the best tech stack to solve their problem.
+In this case, the above (ficticious) tweet rings true. 
+
+In other cases, the client may have a specific tech stack in mind that they want to use. While they may not have the software engineering knowledge necessary to 
+truly weigh the pros and cons of a choice, they are not any less affected by the programming hype cycle. This is most common with platforms like WordPress or 
+Shopify. The client may have heard that WordPress is the best platform for their needs, but they don't know why. They just "know" that it's the best.
+
+The client may also have existing codebase or even an in-house development team that is being augmented or taking over after your deliverables are completed.
+
+## The Client's Perspective on Results
+Now that we've addressed the elephant in the room, let's talk about the more common scenario. The client has a problem that they need solved. They don't care
+about the tech stack, they just want results.
+
+What does results mean in this context? What is the goal of the software being created? To quote [Sunil Pai](https://twitter.com/threepointone): 
+
+> Silver bullets are only useful for warewolf shaped problems
+
+Let's look at a few scenarios that I think are worth considering.
+
+### How readily available is talent?
+
+There is always a hope in agency life or freelance life that, assuming the working relationship is good and mutually benefitial, that a client will come back
+with more work. But for any number of reasons, this is not always what actually happens. 
+
+To get personal for a moment, my favorite technology that I have ever worked with is Elixir. I enjoy the language, the philosphies, the tooling, and the community.
+If I could wave a magic wand and only use one language for the rest of my career, it would be Elixir. However, I would never use Elixir for a client project unless
+it was specifically requested. 
+
+Why? Because the talent pool is small. If the client needs to hire a new developer to maintain the codebase, they will have a hard
+time finding someone. They may also end up paying significantly more for talent due to the simple laws of supply and demand. In my opinion, this is not a good
+situation to put a client in.
+
+### How stable is the technology?
+Stability in this regard can have several meanings.
+
+Will the technology be around in 5 years? Market leaders like React, Vue, and Angular have either significant community backing, corporate backing, or both
+that give us a reasonable expectation that they will be around for the forseeable future. This is not always the case with newer technologies.
+
+How often does the technology experience breaking changes? Re-visiting the previous point, how difficult will it be to find a developer who is up to date on the
+latest changes? Does the technology do an adequate job of staying on top of security concerns and patching issues when discovered? 
+
+### What does the deployment strategy look like? 
+What is involved both in the hosting and deployment side of a technology is a heavy consideration that we need to think about. Can the technology be effortlessly 
+deployed to a cloud provider? Does it require a dedicated server? Does it require a specific operating system? Does it require a specific version of an 
+operating system? Does it have specific requirements that will tether the client to a specific cloud provider? For example, you don't *have* to deploy NextJS
+to Vercel, but if you don't deploy to Vercel and you make use of server actions, what is the versioning strategy to ensure that your clients don't hit a stale 
+API endpoint or vic versa?
+
+Even technologies that often seem "safe" in this regard like PHP, can become problematic very easily down the road. For example, I've been guilty of singing the
+praise of PHP because you can, "Find any random Linux server anywhere and your code will run", but this is not strictly true. In my last agency, a large amount of 
+the work I did was when clients who were deployed to providers like GoDaddy would get a surprise PHP update that would break their site.
+
+What sort of technical skills are necessary to deploy chanegs? Can a non-technical user simply login to a CMS and make changes to content? Or will they need to 
+at least be able to use the Github (or similar) web interface to commit a change to trigger a deployment? 
+
+### What is the performance like?
+Performance can be a bit of touchy subject and I contemplated leaving it out of this post entirely. I think there's definitely potential in the performance
+sphere to "major in the minors" and waste time and financial resources on premature optimization, but it's also a concern that can have real impacts.
+
+For example, if you're building a website for a client that is going to be deployed to a country with poor internet infrastructure, you want to consider
+the performance implications of a client-side rendered application and the network availability and device capabilities of the end user. 
+
+If you are building an eCommerce website, you need to be aware of the reality that latency and performance will have a very real impact on the bottom 
+line and revenue potential. Financial systems are also very time critical and extra unnecessary latency cannot be afforded. 
+
+But maybe this is a travel booking website where performance is not as critical because things inherently take time and the user is used to this because all 
+websites from Expedia to Kayak and etc have a very lenghty checkout process relative to say purchasing a product on Amazon. You don't want to build a system
+that is significantly slower than it could be, but it's not a situation where miliseconds matter. 
+
+## Conclusion
+In conclusion, it's true that in most situations the client won't literally care if you use Go vs C# for your backend, or React vs Vue for your frontend. But
+every technology choice we make is an excercise in trade-offs and it's critical that we make our descisions with the client's best interest in mind and always 
+try to balance the trade-offs in their favor. Nothing will ever be perfect, but we should do our best.
+
+Clients do care deeply about the cons and negative trade offs of our techology choices, even if they can't explain the technical specifics of why a certain outcome
+occured. As freelancers and consultants, they trust us to make the right descisions on their behalf and it's critical we do our best to not betray that trust.
