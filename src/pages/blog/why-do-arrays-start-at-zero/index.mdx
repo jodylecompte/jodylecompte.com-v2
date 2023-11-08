@@ -5,10 +5,21 @@ summary: Have you ever wondered why arrays in programming always seem to start a
 publishDate: 10-09-2023
 slug: why-do-arrays-start-at-zero
 ---
+
+import { Image } from 'astro:assets';
+
+import confused from './confused.jpeg';
+
 # Why Arrays Start at Zero
 
-Have you ever wondered why arrays in programming always seem to start at zero? It's more than just a quirk; it's a 
-convention deeply rooted in computer history, architecture, and memory management. Let's peel back the onion on the 
+<Image
+  class="mx-auto h-auto max-w-[400px] rounded-2xl py-2"
+  src={confused}
+  alt="A developer sitting at his desk horrified and confused at the realization that arrays start at 0."
+/>
+
+Have you ever wondered why arrays in programming always seem to start at zero? It's more than just a quirk; it's a
+convention deeply rooted in computer history, architecture, and memory management. Let's peel back the onion on the
 historical reasonings of how this convention began.
 
 ## What is an Array?
@@ -18,12 +29,13 @@ An array as defined by Wikipedia is:
 > In computer science, an array is a data structure consisting of a collection of elements (values or variables),
 > of same memory size, each identified by at least one array index or key.
 
-For those familiar with programming, this definition likely meets your understanding. However, I'd like to highlight 
+For those familiar with programming, this definition likely meets your understanding. However, I'd like to highlight
 a crucial point to revisit later: the importance of each array member having consistent memory size.
 
-## Manual Memory Management 
+## Manual Memory Management
+
 A deep understanding of manual memory management is not required here, but I want to do a quick 10,000 foot view because
-it's relevant to an implcit aspect of this definition.  In low level languages, scalar data types like an integer all require a certain amount of memory to store. For example, an 
+it's relevant to an implcit aspect of this definition. In low level languages, scalar data types like an integer all require a certain amount of memory to store. For example, an
 integer typically uses 4 bytes of memory while a single character only uses 1. This can vary between systems and architectures.
 
 So if each data type has it's own memory size, this tells us that an array having the same memory size for each member gives us
@@ -39,12 +51,11 @@ $arr = ['Jody', "Johnny", "Jenny", "Jessie"];
 
 This checks out. It's a list of values of the same data type, they can all be stored in the same size in memory. But wait a second, this also works.
 
-
 ```php
 $arr = [1, "Jody", false];
 ```
 
-Now I'm afraid we have some peas in our porridge. And PHP also supports an "associative array" that looks like this. 
+Now I'm afraid we have some peas in our porridge. And PHP also supports an "associative array" that looks like this.
 
 ```php
 $arr = [
@@ -64,10 +75,10 @@ To contrast, let's look at the idea of an array in a lower level language like C
 int ages[] = {32, 36, 41, 42, 45};
 ```
 
-The syntax is almost identical, but there is different behavior occurring here. 
+The syntax is almost identical, but there is different behavior occurring here.
 
 In C, we explicitly define that our array will be of type `int` and we are also implicitly defining that it has a size
-of five by giving it that many items rather than an explicit size. This is the most important detail. 
+of five by giving it that many items rather than an explicit size. This is the most important detail.
 
 The C compiler must know at initialization what the size of an array is going to be so that it can allocate the
 correct amount of memory. Each array item is stored in a contigious block of memory one after the other. The value
@@ -82,11 +93,12 @@ A pointer works in a very similar manager where the pointer is not your actual d
 This is the core reason why arrays are indexed from zero. We often think of arrays in terms of the Nth item and have
 internalized the N-1, but the reality is that the index is actually the offset from the address that the pointer is referencing.
 
-To re-visit Excel, imagine that each value requires four columns (cells) to store each item in your array. Because the compiler 
+To re-visit Excel, imagine that each value requires four columns (cells) to store each item in your array. Because the compiler
 knows this, it can tell you that your data starts at A1. Then if you add four more cells, you will have A5, which is the second item
 in our array.
 
 ## Conclusion
+
 So when you utilize `arrayName[0]`, rather than the 0th or 1st item in the array, this is actually the value at the memory address
 directory with no offset. While an index or offset of one would be the next item in the block.
 
