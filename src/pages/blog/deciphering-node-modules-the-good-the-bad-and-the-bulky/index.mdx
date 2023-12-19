@@ -1,0 +1,71 @@
+---
+layout: ../../../layouts/MarkdownLayout.astro
+title: 'Deciphering Node Modules: The Good, the Bad, and the Bulky'
+summary: What is the deal with the node modules, anyway? Often jestingly refused to as the most dense object in the universe, what is actually even in there? How does it get so large, and what effect does this have on our codebases?
+publishDate: 11-10-2023
+slug: deciphering-node-modules-the-good-the-bad-and-the-bulky
+---
+
+import { Image } from 'astro:assets';
+
+import nodeModules from './node_modules.webp';
+import nodeMeme from './meme.jpeg';
+
+# Deciphering Node Modules: The Good, the Bad, and the Bulky
+
+    <Image
+          class="mx-auto max-w-[400px] rounded-2xl py-2"
+          src={nodeModules}
+          alt="A black hole being swallowed by the node modules directory"
+        />
+
+What is the deal with the node modules, anyway? Often jestingly referred to as the most dense object in the universe, what is
+actually even in there? How does it get so large, and what effect does this have on our codebases?
+
+## The Narrative
+
+There is no shortage of memes poking fun at the size of the node modules directory. This is one of my favorites:
+
+    <Image
+          class="mx-auto max-w-[400px] rounded-2xl py-2"
+          src={nodeMeme}
+          alt="The secret to Thor's hammer and it's ability to be lifted by only the worthy is that it is actually a node modules directory"
+        />
+
+While lots of people joke, it's actually become a pretty serious point of contention in the community and outside where the
+narrative is also presented that JavaScript developers use far too much code and are too reliant on massive amounts of dependencies.
+This is often a very two dimensional opinion based solely on the size of the node modules directory. But what is actually in there?
+
+## TLDR - The Elephant in the Room
+
+Before moving into exploring, I just want to go ahead and address the elephant in the room first. Nobody is actually
+shipping the overwhelming majority of the contents of their node modules directory to production, neither in a
+server bundle or a client bundle. In some cases, the bulk of the (file) weight in the node modules directory is not
+even code.
+
+How many dependencies your project needs or what an acceptable amount of JavaScript to ship to the browser is, is a
+different conversation for a different time, but just keep in mind that you cannot judge a project by it's node modules directory.
+
+## Experiment Setup
+
+Let's start by getting a project going so we can check some stuff out.
+
+```bash
+$ npm create vite@latest demo-app
+$ cd demo-app
+$ npm install
+```
+
+I want to be clear that I am not picking on React or Vite, they are both great tools. But it's a nice and simple way for us to
+have the same starting point and a decent sized node modules directory to begin checking out.
+
+**Quick Note**: PNPM has a different means of storing and indexing dependencies for which I am not qualified to really speak to.
+
+## What's in the box?
+
+### Lots of Code
+|  Language | Files  | Blank  | Comment  | Code |
+|---|---|---|---|---|
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
